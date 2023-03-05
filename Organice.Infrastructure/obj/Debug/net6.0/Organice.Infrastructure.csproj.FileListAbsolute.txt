@@ -1,0 +1,15 @@
+C:\Projects\organice\Organice.Infrastructure\bin\Debug\net6.0\Organice.Infrastructure.deps.json
+C:\Projects\organice\Organice.Infrastructure\bin\Debug\net6.0\Organice.Infrastructure.dll
+C:\Projects\organice\Organice.Infrastructure\bin\Debug\net6.0\Organice.Infrastructure.pdb
+C:\Projects\organice\Organice.Infrastructure\bin\Debug\net6.0\Organice.Core.dll
+C:\Projects\organice\Organice.Infrastructure\bin\Debug\net6.0\Organice.Core.pdb
+C:\Projects\organice\Organice.Infrastructure\obj\Debug\net6.0\Organice.Infrastructure.csproj.AssemblyReference.cache
+C:\Projects\organice\Organice.Infrastructure\obj\Debug\net6.0\Organice.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\organice\Organice.Infrastructure\obj\Debug\net6.0\Organice.Infrastructure.AssemblyInfoInputs.cache
+C:\Projects\organice\Organice.Infrastructure\obj\Debug\net6.0\Organice.Infrastructure.AssemblyInfo.cs
+C:\Projects\organice\Organice.Infrastructure\obj\Debug\net6.0\Organice.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Projects\organice\Organice.Infrastructure\obj\Debug\net6.0\Organice.Infrastructure.csproj.CopyComplete
+C:\Projects\organice\Organice.Infrastructure\obj\Debug\net6.0\Organice.Infrastructure.dll
+C:\Projects\organice\Organice.Infrastructure\obj\Debug\net6.0\refint\Organice.Infrastructure.dll
+C:\Projects\organice\Organice.Infrastructure\obj\Debug\net6.0\Organice.Infrastructure.pdb
+C:\Projects\organice\Organice.Infrastructure\obj\Debug\net6.0\ref\Organice.Infrastructure.dll

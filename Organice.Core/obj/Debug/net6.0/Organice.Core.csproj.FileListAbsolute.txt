@@ -1,0 +1,12 @@
+C:\Projects\organice\Organice.Core\bin\Debug\net6.0\Organice.Core.deps.json
+C:\Projects\organice\Organice.Core\bin\Debug\net6.0\Organice.Core.dll
+C:\Projects\organice\Organice.Core\bin\Debug\net6.0\Organice.Core.pdb
+C:\Projects\organice\Organice.Core\obj\Debug\net6.0\Organice.Core.csproj.AssemblyReference.cache
+C:\Projects\organice\Organice.Core\obj\Debug\net6.0\Organice.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\organice\Organice.Core\obj\Debug\net6.0\Organice.Core.AssemblyInfoInputs.cache
+C:\Projects\organice\Organice.Core\obj\Debug\net6.0\Organice.Core.AssemblyInfo.cs
+C:\Projects\organice\Organice.Core\obj\Debug\net6.0\Organice.Core.csproj.CoreCompileInputs.cache
+C:\Projects\organice\Organice.Core\obj\Debug\net6.0\Organice.Core.dll
+C:\Projects\organice\Organice.Core\obj\Debug\net6.0\refint\Organice.Core.dll
+C:\Projects\organice\Organice.Core\obj\Debug\net6.0\Organice.Core.pdb
+C:\Projects\organice\Organice.Core\obj\Debug\net6.0\ref\Organice.Core.dll

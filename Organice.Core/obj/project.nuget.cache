@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "gd/8b2Kg/ol+6NzYNGjJo3FkmEwTfclsa5LapxnjMvXp7KppXYnaQ9YLe+TrEfgtkPOKDg/W3hbd137ca4Yp0w==",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\organice\\Organice.Core\\Organice.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\xdbug\\.nuget\\packages\\mongodb.bson\\2.19.0\\mongodb.bson.2.19.0.nupkg.sha512",
+    "C:\\Users\\xdbug\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
