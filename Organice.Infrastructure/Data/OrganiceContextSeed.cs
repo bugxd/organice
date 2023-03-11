@@ -36,7 +36,13 @@ namespace Organice.Infrastructure.Data
                     {
                         Id = "605fbfdda571444fd7ade05b",
                         Title = "First Workflow",
-                        Description = "#First Workflow\n##Nodes:\n- Start\n- End\n##Edges:\n- Start -> End",
+                        Description = $"# First Workflow  \r\n" +
+                        $"This is just an example description.  \r\n" +
+                        $"## Nodes:  \r\n" +
+                        $"- Start  \r\n" +
+                        $"- End  \r\n" +
+                        $"## Edges:  \r\n" +
+                        $"- Start -> End",
                         Nodes = new List<Node>{
                             new Node()
                             {
@@ -44,7 +50,12 @@ namespace Organice.Infrastructure.Data
                                 Label = "Start",
                                 Description = "First Node",
                                 Deletable = false,
-                                NodeType = NodeType.Output,
+                                NodeType = NodeType.Input,
+                                Position = new Point()
+                                {
+                                    X = 0,
+                                    Y = 0,
+                                }
                             },
                             new Node()
                             {
@@ -52,7 +63,12 @@ namespace Organice.Infrastructure.Data
                                 Label = "End",
                                 Description = "Last Node",
                                 Deletable = false,
-                                NodeType = NodeType.Input,
+                                NodeType = NodeType.Output,
+                                Position = new Point()
+                                {
+                                    X = 0,
+                                    Y = 100,
+                                }
                             }
                         },
                         Edges = new List<Edge>
@@ -67,10 +83,120 @@ namespace Organice.Infrastructure.Data
                         },
                         Tags = new List<string>
                         {
-                            "#test","#showout"
+                            "test","showout"
                         },
                         OwnerId = "605fbfdda571444fd7ade05b",
-                    }
+                    },
+                    new Workflow
+                    {
+                        Id = "640c9ba2e03f01114322f9a3",
+                        Title = "Second Workflow",
+                        Description = $"# First Workflow  \r\n" +
+                        $"This is just an example description.  \r\n" +
+                        $"## Nodes:  \r\n" +
+                        $"- Start  \r\n" +
+                        $"- End  \r\n" +
+                        $"## Edges:  \r\n" +
+                        $"- Start -> End",
+                        Nodes = new List<Node>{
+                            new Node()
+                            {
+                                Id="640c9bb25de24839d1a4c965",
+                                Label = "Start",
+                                Description = "First Node",
+                                Deletable = false,
+                                NodeType = NodeType.Input,
+                                Position = new Point()
+                                {
+                                    X = 0,
+                                    Y = 0,
+                                }
+                            },
+                            new Node()
+                            {
+                                Id="640c9bb8ea6390ff3ea8842f",
+                                Label = "End",
+                                Description = "Last Node",
+                                Deletable = false,
+                                NodeType = NodeType.Output,
+                                Position = new Point()
+                                {
+                                    X = 0,
+                                    Y = 100,
+                                }
+                            }
+                        },
+                        Edges = new List<Edge>
+                        {
+                            new Edge()
+                            {
+                                Id = "640c9bbcea15e8715ae06872",
+                                Label = "Start -> End",
+                                SourceId = "640c9bb25de24839d1a4c965",
+                                TargetId = "640c9bb8ea6390ff3ea8842f"
+                            }
+                        },
+                        Tags = new List<string>
+                        {
+                            "test","showout"
+                        },
+                        OwnerId = "605fbfdda571444fd7ade05b",
+                    },
+                    new Workflow
+                    {
+                        Id = "640c9bc99506dbee1dd3ba95",
+                        Title = "Third Workflow",
+                        Description = $"# First Workflow  \r\n" +
+                        $"This is just an example description.  \r\n" +
+                        $"## Nodes:  \r\n" +
+                        $"- Start  \r\n" +
+                        $"- End  \r\n" +
+                        $"## Edges:  \r\n" +
+                        $"- Start -> End",
+                        Nodes = new List<Node>{
+                            new Node()
+                            {
+                                Id="640c9bcc8e2b93af605db1d3",
+                                Label = "Start",
+                                Description = "First Node",
+                                Deletable = false,
+                                NodeType = NodeType.Input,
+                                Position = new Point()
+                                {
+                                    X = 0,
+                                    Y = 0,
+                                }
+                            },
+                            new Node()
+                            {
+                                Id="640c9bd0002f43b02234fc81",
+                                Label = "End",
+                                Description = "Last Node",
+                                Deletable = false,
+                                NodeType = NodeType.Output,
+                                Position = new Point()
+                                {
+                                    X = 0,
+                                    Y = 100,
+                                }
+                            }
+                        },
+                        Edges = new List<Edge>
+                        {
+                            new Edge()
+                            {
+                                Id = "640c9bd5b2524113b8be8a23",
+                                Label = "Start -> End",
+                                SourceId = "640c9bcc8e2b93af605db1d3",
+                                TargetId = "640c9bd0002f43b02234fc81"
+                            }
+                        },
+                        Tags = new List<string>
+                        {
+                            "test","showout"
+                        },
+                        OwnerId = "605fbfdda571444fd7ade05b",
+                    },
                });
         }
     }

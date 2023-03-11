@@ -1,6 +1,6 @@
 import { createRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { Menu, Sticky } from "semantic-ui-react";
+import { Container, Menu, Sticky } from "semantic-ui-react";
 
 function App() {
     const contextRef = createRef <HTMLDivElement>()
@@ -38,7 +38,9 @@ function App() {
                     />
                 </Menu>
             </Sticky>
-            <Outlet />
+            <Container>
+                <Outlet />
+            </Container>
         </div>
         
     )

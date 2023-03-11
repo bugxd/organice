@@ -46,6 +46,7 @@ export type Node = {
   id: Scalars['String'];
   label: Scalars['String'];
   nodeType: NodeType;
+  position: Point;
 };
 
 export type NodeInput = {
@@ -54,6 +55,7 @@ export type NodeInput = {
   id: Scalars['String'];
   label: Scalars['String'];
   nodeType: NodeType;
+  position: PointInput;
 };
 
 export enum NodeType {
@@ -62,14 +64,25 @@ export enum NodeType {
   Output = 'OUTPUT'
 }
 
+export type Point = {
+  __typename?: 'Point';
+  x: Scalars['Float'];
+  y: Scalars['Float'];
+};
+
+export type PointInput = {
+  x: Scalars['Float'];
+  y: Scalars['Float'];
+};
+
 export type Query = {
   __typename?: 'Query';
-  workfloByIds: Workflow;
+  workflow: Workflow;
   workflows: Array<Workflow>;
 };
 
 
-export type QueryWorkfloByIdsArgs = {
+export type QueryWorkflowArgs = {
   id: Scalars['String'];
 };
 
@@ -103,6 +116,15 @@ export type WorkflowInput = {
   title: Scalars['String'];
 };
 
+export type WorkflowItemFragment = { __typename?: 'Workflow', id: string, title: string, description: string, tags: Array<string> } & { ' $fragmentName'?: 'WorkflowItemFragment' };
+
+export type GetWorkflowQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type GetWorkflowQuery = { __typename?: 'Query', workflow: { __typename?: 'Workflow', id: string, title: string, nodes: Array<{ __typename?: 'Node', id: string, nodeType: NodeType, label: string, description: string, deletable: boolean, position: { __typename?: 'Point', x: number, y: number } }>, edges: Array<{ __typename?: 'Edge', id: string, label: string, sourceId: string, targetId: string }> } };
+
 export type GetWorkflowsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -111,7 +133,6 @@ export type GetWorkflowsQuery = { __typename?: 'Query', workflows: Array<(
     & { ' $fragmentRefs'?: { 'WorkflowItemFragment': WorkflowItemFragment } }
   )> };
 
-export type WorkflowItemFragment = { __typename?: 'Workflow', id: string, title: string, description: string } & { ' $fragmentName'?: 'WorkflowItemFragment' };
-
-export const WorkflowItemFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WorkflowItem"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Workflow"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]} as unknown as DocumentNode<WorkflowItemFragment, unknown>;
-export const GetWorkflowsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetWorkflows"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"workflows"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"WorkflowItem"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WorkflowItem"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Workflow"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]} as unknown as DocumentNode<GetWorkflowsQuery, GetWorkflowsQueryVariables>;
+export const WorkflowItemFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WorkflowItem"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Workflow"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}}]}}]} as unknown as DocumentNode<WorkflowItemFragment, unknown>;
+export const GetWorkflowDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetWorkflow"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"workflow"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"nodeType"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"deletable"}},{"kind":"Field","name":{"kind":"Name","value":"position"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"x"}},{"kind":"Field","name":{"kind":"Name","value":"y"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"sourceId"}},{"kind":"Field","name":{"kind":"Name","value":"targetId"}}]}}]}}]}}]} as unknown as DocumentNode<GetWorkflowQuery, GetWorkflowQueryVariables>;
+export const GetWorkflowsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetWorkflows"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"workflows"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"WorkflowItem"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"WorkflowItem"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Workflow"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}}]}}]} as unknown as DocumentNode<GetWorkflowsQuery, GetWorkflowsQueryVariables>;

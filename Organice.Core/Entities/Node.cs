@@ -14,5 +14,7 @@ namespace backend.Models
         public bool Deletable { get; set; }
 
         public NodeType NodeType { get; set; }
+
+        public Point Position { get; set; } = new Point();
     }
 }

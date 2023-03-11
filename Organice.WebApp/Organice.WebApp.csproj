@@ -31,6 +31,7 @@
 	<ItemGroup>
 	  <None Remove="ClientApp\src\hooks\useGraphql.ts" />
 	  <None Remove="ClientApp\src\pages\Admin.tsx" />
+	  <None Remove="ClientApp\src\pages\EditWorkflow.tsx" />
 	  <None Remove="ClientApp\src\pages\ErrorPage.tsx" />
 	  <None Remove="ClientApp\src\pages\Profile.tsx" />
 	</ItemGroup>
@@ -45,6 +46,7 @@
 	    <SubType>Code</SubType>
 	  </TypeScriptCompile>
 	  <TypeScriptCompile Include="ClientApp\src\pages\Admin.tsx" />
+	  <TypeScriptCompile Include="ClientApp\src\pages\EditWorkflow.tsx" />
 	  <TypeScriptCompile Include="ClientApp\src\pages\ErrorPage.tsx" />
 	  <TypeScriptCompile Include="ClientApp\src\pages\Profile.tsx" />
 	</ItemGroup>

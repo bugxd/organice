@@ -13,8 +13,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
+    "\n  fragment WorkflowItem on Workflow {\n    id,\n    title,\n    description,\n    tags\n  }\n": types.WorkflowItemFragmentDoc,
+    "\n    query GetWorkflow($id: String!) {\n        workflow(id: $id) {\n          id\n          title\n          nodes {\n            id\n            nodeType\n            label\n            description\n            deletable\n            position {\n                x\n                y\n            }\n          }\n          edges {\n            id\n            label\n            sourceId\n            targetId\n          }\n        }\n    }\n": types.GetWorkflowDocument,
     "\n  query GetWorkflows {\n    workflows {\n        ...WorkflowItem\n    }\n  }\n": types.GetWorkflowsDocument,
-    "\n  fragment WorkflowItem on Workflow {\n    id,\n    title,\n    description\n  }\n": types.WorkflowItemFragmentDoc,
 };
 
 /**
@@ -34,11 +35,15 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query GetWorkflows {\n    workflows {\n        ...WorkflowItem\n    }\n  }\n"): (typeof documents)["\n  query GetWorkflows {\n    workflows {\n        ...WorkflowItem\n    }\n  }\n"];
+export function graphql(source: "\n  fragment WorkflowItem on Workflow {\n    id,\n    title,\n    description,\n    tags\n  }\n"): (typeof documents)["\n  fragment WorkflowItem on Workflow {\n    id,\n    title,\n    description,\n    tags\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment WorkflowItem on Workflow {\n    id,\n    title,\n    description\n  }\n"): (typeof documents)["\n  fragment WorkflowItem on Workflow {\n    id,\n    title,\n    description\n  }\n"];
+export function graphql(source: "\n    query GetWorkflow($id: String!) {\n        workflow(id: $id) {\n          id\n          title\n          nodes {\n            id\n            nodeType\n            label\n            description\n            deletable\n            position {\n                x\n                y\n            }\n          }\n          edges {\n            id\n            label\n            sourceId\n            targetId\n          }\n        }\n    }\n"): (typeof documents)["\n    query GetWorkflow($id: String!) {\n        workflow(id: $id) {\n          id\n          title\n          nodes {\n            id\n            nodeType\n            label\n            description\n            deletable\n            position {\n                x\n                y\n            }\n          }\n          edges {\n            id\n            label\n            sourceId\n            targetId\n          }\n        }\n    }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query GetWorkflows {\n    workflows {\n        ...WorkflowItem\n    }\n  }\n"): (typeof documents)["\n  query GetWorkflows {\n    workflows {\n        ...WorkflowItem\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

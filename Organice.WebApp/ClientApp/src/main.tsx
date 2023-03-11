@@ -11,6 +11,7 @@ import ErrorPage from './pages/ErrorPage'
 import Profile from './pages/Profile'
 import Admin from './pages/Admin'
 import App from './App';
+import EditWorkflow from './pages/EditWorkflow';
 
 
 const queryClient = new QueryClient();
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             {
                 path: "/admin",
                 element: <Admin />,
+            },
+            {
+                path: "/edit/:workflowId",
+                element: <EditWorkflow />
             },
         ]
     },
