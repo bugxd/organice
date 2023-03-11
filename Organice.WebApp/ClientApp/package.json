@@ -1,0 +1,37 @@
+{
+  "name": "react-ts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "gql": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 graphql-codegen --config src/codegen.ts -d"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.26.1",
+    "@types/react-router-dom": "^5.3.3",
+    "graphql": "^16.6.0",
+    "graphql-react": "^20.0.0",
+    "graphql-request": "^5.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.5",
+    "react-router-dom": "^6.9.0",
+    "sass": "^1.58.3",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4",
+    "zustand": "^4.3.6"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^3.2.2",
+    "@graphql-codegen/client-preset": "^2.1.1",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "cross-env": "^7.0.3",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0"
+  }
+}
