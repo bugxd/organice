@@ -1,7 +1,7 @@
 ﻿import { FragmentType, useFragment } from '../../gql/fragment-masking'
 import { graphql } from '../../gql'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
-import { Button, Divider, Grid, Icon, Label, Segment } from 'semantic-ui-react'
+import { Button, Grid, Icon, Label, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export const WorkflowFragment = graphql(/* GraphQL */ `
@@ -18,12 +18,12 @@ const Workflow = (props: {
 }) => {
     const workflow = useFragment(WorkflowFragment, props.workflow)
     return (
-        <Segment>
+        <Segment key={'' + workflow.id}>
             <Grid>
                 <Grid.Row>
                     <Grid.Column width={5}>
                         <h2 style={{ margin: '0px' }}>{workflow.title}</h2>
-                        {workflow.tags.map(tag => (<Label><Icon name='hashtag' />{tag}</Label>))}
+                        {workflow.tags.map((tag, i) => (<Label key={`${tag}_${i}` }><Icon name='hashtag' />{tag}</Label>))}
                     </Grid.Column>
                     <Grid.Column floated='right' width={2}>
                         <Button.Group icon>

@@ -1,11 +1,15 @@
 ﻿import { graphql } from "../gql";
 import { useGraphQL } from "../hooks/useGraphql";
-import ReactFlow, { useEdgesState, useNodesState, Node, Edge } from 'reactflow';
+import ReactFlow, { Node, Edge, Controls, ControlButton } from 'reactflow';
 
 import 'reactflow/dist/style.css';
-import { Segment } from "semantic-ui-react";
-import { useEffect, useState } from "react";
+import '../styles/override_react_flow.scss'
+
+import { Icon, Segment } from "semantic-ui-react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import EditNode from "../components/flow/EditNode";
+import { shallow } from 'zustand/shallow';
 
 const GetWorkflow = graphql(`
     query GetWorkflow($id: String!) {
@@ -33,21 +37,72 @@ const GetWorkflow = graphql(`
     }
 `);
 
+function CustomControls(props: { addNodeCallback: () => void }) {
+    const handleAddNodeClick = () => {
+        console.log("add new node handler");
+        props.addNodeCallback();
+    }
+
+    return (
+        <Controls
+            showZoom={false}
+        >
+            <ControlButton onClick={handleAddNodeClick}>
+                <Icon name='add square' />
+            </ControlButton>
+        </Controls>
+    );
+}
+
+import useFlowStore, { FlowState } from '../stores/flowStore';
+
+const selector = (state: FlowState) => ({
+    nodes: state.nodes,
+    edges: state.edges,
+    initNodes: state.initNodes,
+    initEdges: state.initEdges,
+    onNodesChange: state.onNodesChange,
+    onEdgesChange: state.onEdgesChange,
+    onConnect: state.onConnect,
+    addEmptyNode: state.addEmptyNode,
+    updateNode: state.updateNode,
+});
+
+const nodeTypes = { edit: EditNode };
+
 function EditWorkflow() {
     let { workflowId } = useParams();
 
-    const { data } = useGraphQL(GetWorkflow, { id: workflowId || "" })
-    const [nodes, setNodes, onNodesChange] = useNodesState([]);
-    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+    const { data } = useGraphQL(GetWorkflow, { id: workflowId || "" });
+
+    const {
+        nodes,
+        edges,
+        initNodes,
+        initEdges,
+        onNodesChange,
+        onEdgesChange,
+        onConnect,
+        addEmptyNode
+    } = useFlowStore(selector, shallow);
+
+    const mapNodeType = (nodeType: string) => {
+        switch (nodeType) {
+            case "INPUT": return "input"
+            case "OUTPUT": return "output"
+            default: return "edit"
+        }
+    }
 
     useEffect(() => {
         console.log(data);
         if (data) {
             const mappedNodes: Node[] = data.workflow.nodes.map(node => ({
                 id: node.id,
-                type: node.nodeType.toLocaleLowerCase(),
+                type: mapNodeType(node.nodeType),
                 data: {
                     label: node.label,
+                    description: node.description
                 },
                 deletable: node.deletable,
                 position: {
@@ -55,7 +110,7 @@ function EditWorkflow() {
                     y: node.position.y,
                 },
             }));
-            setNodes(mappedNodes);
+            initNodes(mappedNodes);
 
             const mappedEdges: Edge[] = data.workflow.edges.map(edge => ({
                 id: edge.id,
@@ -64,11 +119,15 @@ function EditWorkflow() {
                 label: edge.label,
                 type: 'straight',
             }));
-            setEdges(mappedEdges);
+            initEdges(mappedEdges);
         } else {
             console.log("no workflow data: " + workflowId);
         }
     }, [data]);
+
+    const handleAddNode = () => {
+        addEmptyNode();
+    }
 
 
     return (
@@ -78,7 +137,11 @@ function EditWorkflow() {
                 edges={edges}
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
-            />
+                onConnect={onConnect}
+                nodeTypes={nodeTypes}
+            >
+                <CustomControls addNodeCallback={handleAddNode } />
+            </ReactFlow>
         </Segment>
     );
 }

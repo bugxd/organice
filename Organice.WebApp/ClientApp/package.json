@@ -10,8 +10,10 @@
     "gql": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 graphql-codegen --config src/codegen.ts -d"
   },
   "dependencies": {
+    "@reactflow/controls": "^11.1.8",
     "@tanstack/react-query": "^4.26.1",
     "@types/react-router-dom": "^5.3.3",
+    "bson-objectid": "^2.0.4",
     "graphql": "^16.6.0",
     "graphql-react": "^20.0.0",
     "graphql-request": "^5.2.0",
